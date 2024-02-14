@@ -18,47 +18,69 @@ class HomeView extends GetResponsiveView<HomeController> {
         child: Scaffold(
             backgroundColor: Colors.white,
             resizeToAvoidBottomInset: false,
-            body: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SvgPicture.asset(
-                    AppAssets.topImage,
-                    fit: BoxFit.cover,
-                    // Adjust fit according to your needs
-                  ),
-                  searchbar(context),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20.0, right: 20),
-                    child: InkWell(
-                      onTap: () {
-                        controller.convert();
-                      },
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: Colors.blue, // Set blue background color
-                          borderRadius: BorderRadius.circular(
-                              10), // Set rounded border radius
+            body: Stack(
+              children: [
+                Obx(() => Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          AppAssets.topImage,
+                          fit: BoxFit.cover,
+                          // Adjust fit according to your needs
                         ),
-                        child: Container(
-                          width: double
-                              .infinity, // Take the total width of the screen
-                          padding: EdgeInsets.all(10), // Add padding as needed
-                          alignment: Alignment.center, // Align text in center
-                          child: Text(
-                            "Convert",
-                            style: TextStyle(
-                              color: Colors.white, // Set text color to white
+                        searchbar(context),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 20.0, right: 20),
+                          child: InkWell(
+                            onTap: () {
+                              controller.convert();
+                            },
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: Colors.blue, // Set blue background color
+                                borderRadius: BorderRadius.circular(
+                                    10), // Set rounded border radius
+                              ),
+                              child: Container(
+                                width: double
+                                    .infinity, // Take the total width of the screen
+                                padding:
+                                    EdgeInsets.all(10), // Add padding as needed
+                                alignment:
+                                    Alignment.center, // Align text in center
+                                child: const Text(
+                                  "Convert",
+                                  style: TextStyle(
+                                    color:
+                                        Colors.white, // Set text color to white
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                  ),
-                  SvgPicture.asset(AppAssets.homeImage),
-                ])));
+                        controller.thumbnailUrl.value == ""
+                            ? Container()
+                            : Image.network(controller.thumbnailUrl.value)
+                      ],
+                    )),
+                Positioned(
+                  bottom: 0,
+                  left: 0,
+                  right: 0,
+                  child: SvgPicture.asset(AppAssets.homeImage),
+                ),
+                Positioned(
+                  bottom: 50,
+                  left: 0,
+                  right: 0,
+                  child: SvgPicture.asset(AppAssets.design),
+                ),
+              ],
+            )));
   }
 
   Widget searchbar(BuildContext context) {
