@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hack/constants/path.dart';
-import 'package:hack/pages/homepage_view.dart';
-import 'package:hack/routing.dart';
+import 'package:video/constants/path.dart';
+import 'package:video/pages/homepage_view.dart';
 
 void main() {
   runApp(const MyApp());

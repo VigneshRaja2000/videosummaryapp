@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:hack/constants/path.dart';
-import 'package:hack/pages/homepage_binding.dart';
-import 'package:hack/pages/homepage_view.dart';
+import 'package:video/constants/path.dart';
+import 'package:video/pages/homepage_binding.dart';
+import 'package:video/pages/homepage_view.dart';
 
 class AppPages {
   AppPages._();

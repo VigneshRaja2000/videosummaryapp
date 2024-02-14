@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hack/pages/homepage_controller.dart';
 import 'package:get/get.dart';
+import 'package:video/pages/homepage_controller.dart';
 
 class HomeView extends GetResponsiveView<HomeController> {
   HomeView({Key? key}) : super(key: key) {
