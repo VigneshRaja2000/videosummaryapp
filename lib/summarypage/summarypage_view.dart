@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:video/pages/homepage_controller.dart';
+import 'package:video/constants/strings.dart';
+import 'package:video/summarypage/summarypage_controller.dart';
 
-class HomeView extends GetResponsiveView<HomeController> {
-  HomeView({Key? key}) : super(key: key) {
-    Get.put(HomeController());
+class SummaryView extends GetResponsiveView<SummaryController> {
+  SummaryView({Key? key}) : super(key: key) {
     controller.init();
 
     // });
@@ -22,7 +22,7 @@ class HomeView extends GetResponsiveView<HomeController> {
 
   _mainAppBar(context) {
     return AppBar(
-      title: const Text('Home'),
+      title: const Text(AppStrings.summary),
       centerTitle: true,
       backgroundColor: Colors.deepPurple,
     );

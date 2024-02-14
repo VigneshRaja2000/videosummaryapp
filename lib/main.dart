@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:video/constants/path.dart';
-import 'package:video/pages/homepage_view.dart';
+import 'package:video/homepage/homepage_view.dart';
+import 'package:video/routing.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       ),
       home: HomeView(),
       initialRoute: AppPaths.home,
-      // initialBinding: AppPages.initialBinding,
+      getPages: AppPages.routes,
     );
   }
 }
