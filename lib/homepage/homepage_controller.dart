@@ -17,6 +17,7 @@ class HomeController extends GetxController with HomeVariables {
     // Get.toNamed(AppPaths.summary);
 
     String? videoId = YoutubePlayer.convertUrlToId(url.text);
+    print(videoId);
     await getCaptions(videoId!);
 
     // await fetchCaptionTracks();
@@ -33,7 +34,10 @@ class HomeController extends GetxController with HomeVariables {
       print(manifest.tracks);
       if (manifest.tracks.isNotEmpty) {
         // Just for example, we'll take the first track
-        var trackInfo = manifest.tracks[40];
+        var data = manifest.tracks.where((ClosedCaptionTrackInfo element) {
+          return element.language.code == "en";
+        }).toList();
+        var trackInfo = data[0];
         print(
             trackInfo); // Get the actual closed caption track which contains all the captions
         var track = await yt.videos.closedCaptions.get(trackInfo);
@@ -96,9 +100,9 @@ class HomeController extends GetxController with HomeVariables {
 //   }
 // }
 
-  void generateSummary(text) async {
+  generateSummary(text) async {
     var url = Uri.parse("https://api.openai.com/v1/chat/completions");
-    var apiKey = "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";
+    var apiKey = "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";
     var headers = {
       "Content-Type": "application/json",
       "Authorization": "Bearer $apiKey",
@@ -121,9 +125,11 @@ class HomeController extends GetxController with HomeVariables {
 
     if (response.statusCode == 200) {
       print(response.body);
+      // return response.body.choices[0].message.content;
       // Handle response
     } else {
       print('Request failed with status: ${response.statusCode}.');
+      return text;
     }
   }
 

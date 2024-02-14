@@ -22,6 +22,7 @@ class HomeView extends GetResponsiveView<HomeController> {
               children: [
                 Obx(() => Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         SvgPicture.asset(
                           AppAssets.topImage,
@@ -64,7 +65,10 @@ class HomeView extends GetResponsiveView<HomeController> {
                         ),
                         controller.thumbnailUrl.value == ""
                             ? Container()
-                            : Image.network(controller.thumbnailUrl.value)
+                            : Container(
+                                padding: EdgeInsets.all(10.0),
+                                child: Image.network(
+                                    controller.thumbnailUrl.value))
                       ],
                     )),
                 Positioned(
